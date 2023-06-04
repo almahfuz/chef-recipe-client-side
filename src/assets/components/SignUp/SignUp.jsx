@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner2 from "../images/Banner2.jpg";
 import SocialLogSign from '../SocialLogSign/SocialLogSign';
+import { Link } from 'react-router-dom';
 const SignUp = () => {
     return (
         <div>
@@ -60,27 +61,7 @@ const SignUp = () => {
                     placeholder="Photo link"
                   />
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      id="remember_me"
-                      name="remember_me"
-                      type="checkbox"
-                      className="h-4 w-4 bg-blue-500 focus:ring-blue-400 border-gray-300 rounded"
-                    />
-                    <label
-                      htmlFor="remember_me"
-                      className="ml-2 block text-sm text-gray-800"
-                    >
-                      Remember me
-                    </label>
-                  </div>
-                  <div className="text-sm">
-                    <a href="#" className="text-neutral-600 hover:text-neutral-800">
-                      Forgot your password?
-                    </a>
-                  </div>
-                </div>
+               
                 <div>
                   <button
                     type="submit"
@@ -93,7 +74,16 @@ const SignUp = () => {
               <div>
                <SocialLogSign></SocialLogSign>
               </div>
+              <div className="text-sm text-center">
+              Already have an account?
+                <Link
+                  to="/login"
+                  className="text-neutral-600 hover:text-neutral-800"
+                >
+                 Log in 
+                </Link>
              
+            </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Banner2 from "../images/Banner2.jpg";
 import SocialLogSign from "../SocialLogSign/SocialLogSign";
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div>
@@ -14,10 +15,10 @@ const Login = () => {
             <div className="self-start hidden lg:flex flex-col  text-white">
               {/* <img src="#" className="mb-3"> */}
               <h1 className="mb-3 font-bold text-5xl text-neutral-700">
-               Started Kabab House
+                Started Kabab House
               </h1>
               <p className="pr-3 text-neutral-700">
-              Marinate, thread, grill, serve. Only for the best kebab!
+                Marinate, thread, grill, serve. Only for the best kebab!
               </p>
             </div>
           </div>
@@ -25,7 +26,7 @@ const Login = () => {
             <div className="p-12 bg-white mx-auto rounded-2xl w-100 ">
               <div className="mb-4">
                 <h3 className="font-semibold text-2xl text-neutral-700">
-                 Log In
+                  Log In
                 </h3>
                 <p className="text-gray-500">Please log in to your account.</p>
               </div>
@@ -50,28 +51,8 @@ const Login = () => {
                     placeholder="Enter your password"
                   />
                 </div>
-             
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      id="remember_me"
-                      name="remember_me"
-                      type="checkbox"
-                      className="h-4 w-4 bg-blue-500 focus:ring-blue-400 border-gray-300 rounded"
-                    />
-                    <label
-                      htmlFor="remember_me"
-                      className="ml-2 block text-sm text-gray-800"
-                    >
-                      Remember me
-                    </label>
-                  </div>
-                  <div className="text-sm">
-                    <a href="#" className="text-neutral-600 hover:text-neutral-800">
-                      Forgot your password?
-                    </a>
-                  </div>
-                </div>
+
+               
                 <div>
                   <button
                     type="submit"
@@ -82,9 +63,17 @@ const Login = () => {
                 </div>
               </div>
               <div>
-               <SocialLogSign></SocialLogSign>
+                <SocialLogSign></SocialLogSign>
               </div>
-             
+              <div className="text-sm text-center">
+                Don't have a account?
+                <Link
+                  to="/signUp"
+                  className="text-neutral-600 hover:text-neutral-800"
+                >
+                  Registered here
+                </Link>
+              </div>
             </div>
           </div>
         </div>
