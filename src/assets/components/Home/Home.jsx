@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Banner2 from "../images/Banner2.jpg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Home = () => {
+  // const {user} = useContext(AuthContext);
+
   return (
     <div className="min-h-[calc(100vh-136px)]">
       <div
@@ -25,6 +28,7 @@ const Home = () => {
       </div>
       <div className="">
 
+     
       </div>
     </div>
   );
