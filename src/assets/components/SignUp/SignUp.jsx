@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useContext, useState } from "react";
 import Banner2 from "../images/Banner2.jpg";
-import SocialLogSign from '../SocialLogSign/SocialLogSign';
-import { Link } from 'react-router-dom';
+import SocialLogSign from "../SocialLogSign/SocialLogSign";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 const SignUp = () => {
-    return (
-        <div>
-             <div
+  const { registerCreateUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleWithRegistration = (e) => {
+    e.preventDefault();
+    // console.log(name, email, password);
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) {
+      setError("8 characters,at least 1 letter,1 num and 1 special character");
+      return;
+    }
+    if ((name, email, password)) {
+      registerCreateUser(name,email, password)
+        .then((result) => {
+          console.log(result.user);
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  };
+
+  return (
+    <div>
+      <div
         className="bg-no-repeat bg-cover bg-center relative pt-4 pb-4"
         style={{ backgroundImage: `url(${Banner2})` }}
       >
@@ -15,10 +44,10 @@ const SignUp = () => {
             <div className="self-start hidden lg:flex flex-col  text-white">
               {/* <img src="#" className="mb-3"> */}
               <h1 className="mb-3 font-bold text-5xl text-neutral-700">
-               Started Kabab House
+                Started Kabab House
               </h1>
               <p className="pr-3 text-neutral-700">
-              Marinate, thread, grill, serve. Only for the best kebab!
+                Marinate, thread, grill, serve. Only for the best kebab!
               </p>
             </div>
           </div>
@@ -31,39 +60,56 @@ const SignUp = () => {
                 <p className="text-gray-500">Please sign in to your account.</p>
               </div>
               <div className="space-y-5">
+              <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 tracking-wide">
+                    Name
+                  </label>
+                  <input
+                   onChange={(e) => setName(e.target.value)}
+                    className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
+                    type="text"
+                    placeholder="Name"
+                    required />
+                  
+                </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 tracking-wide">
                     Email
                   </label>
                   <input
+                    onChange={(e) => setEmail(e.target.value)}
                     className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
-                    type=""
-                    placeholder="mail@gmail.com"
-                  />
+                    type="email"
+                    placeholder="Enter your email"
+                    required   />
                 </div>
                 <div className="space-y-2">
                   <label className="mb-5 text-sm font-medium text-gray-700 tracking-wide">
                     Password
                   </label>
                   <input
+                   onChange={(e) => setPassword(e.target.value)}
                     className="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
-                    type=""
+                    type="password"
                     placeholder="Enter your password"
-                  />
+                    required />
+                  <p className="text-[6px] text-rose-700">{error}</p>
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 tracking-wide">
                     Photo URL
                   </label>
                   <input
+                    onChange={(e) => setPassword(e.target.value)}
                     className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                     type=""
                     placeholder="Photo link"
                   />
-                </div>
-               
+                </div> */}
+
                 <div>
                   <button
+                   onClick={handleWithRegistration}
                     type="submit"
                     className="w-full flex justify-center bg-neutral-300 hover:bg-neutral-400 text-neutral-700 p-3  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
                   >
@@ -72,24 +118,23 @@ const SignUp = () => {
                 </div>
               </div>
               <div>
-               <SocialLogSign></SocialLogSign>
+                <SocialLogSign></SocialLogSign>
               </div>
               <div className="text-sm text-center">
-              Already have an account?
+                Already have an account?
                 <Link
                   to="/login"
                   className="text-neutral-600 hover:text-neutral-800"
                 >
-                 Log in 
+                  Log in
                 </Link>
-             
-            </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default SignUp;
