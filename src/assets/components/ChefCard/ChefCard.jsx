@@ -19,7 +19,7 @@ const ChefCard = (props) => {
     setIsClicked(true);
   };
 
-  console.log(props.cards.recipe_img);
+  // console.log(props.cards.recipe_img);
   const { recipe_img, recipe_name, ingredients, cooking_method, rating } =
     props.cards;
 

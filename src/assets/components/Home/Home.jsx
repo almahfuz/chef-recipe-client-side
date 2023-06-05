@@ -6,6 +6,7 @@ import Chefs from "../Chefs/Chefs";
 
 const Home = () => {
   const [ChefsItems, setChefsItems] = useState([]);
+  const {user}= useContext(AuthContext);
 
   useEffect(() => {
     fetch("https://chef-server-almahfuz.vercel.app/AllData")
@@ -43,6 +44,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      
     </div>
   );
 };

@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 const SignUp = () => {
   const { registerCreateUser } = useContext(AuthContext);
-
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [PhotoURL, setPhotoURL] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -20,18 +20,34 @@ const SignUp = () => {
       setError("Minimum 8 characters, at least 1 letter and 1 number");
       return;
     }
-   
-    if ((name, email, password)) {
+    if ((email, password)) {
       registerCreateUser(email, password)
         .then((result) => {
           console.log(result.user);
+          //const createdUser = result.user;
+          console.log(createdUser);
           navigate("/");
-
+          setName(name);
+          //  console.log(result.user);
         })
         .catch((err) => {
           console.log(err.message);
         });
     }
+    // if ((name, PhotoURL)) {
+    //   updatedProfile(name, PhotoURL)
+    //     .then((result) => {
+    //       // const createUser = result.user;
+    //       console.log(result.user);
+    //       //   navigate("/");
+    //       setName(name);
+    //       setPhotoURL(PhotoURL);
+    //       //  console.log(name);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err.message);
+    //     });
+    // }
   };
 
   return (
@@ -62,17 +78,17 @@ const SignUp = () => {
                 <p className="text-gray-500">Please sign in to your account.</p>
               </div>
               <div className="space-y-5">
-              <div className="space-y-2">
+                <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 tracking-wide">
                     Name
                   </label>
                   <input
-                   onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
                     className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                     type="text"
                     placeholder="Name"
-                    required />
-                  
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 tracking-wide">
@@ -83,18 +99,20 @@ const SignUp = () => {
                     className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                     type="email"
                     placeholder="Enter your email"
-                    required   />
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="mb-5 text-sm font-medium text-gray-700 tracking-wide">
                     Password
                   </label>
                   <input
-                   onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                     type="password"
                     placeholder="Enter your password"
-                    required />
+                    required
+                  />
                   <p className="text-[8px] text-rose-700">{error}</p>
                 </div>
                 {/* <div className="space-y-2">
@@ -102,7 +120,7 @@ const SignUp = () => {
                     Photo URL
                   </label>
                   <input
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPhotoURL(e.target.value)}
                     className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                     type=""
                     placeholder="Photo link"
@@ -111,7 +129,7 @@ const SignUp = () => {
 
                 <div>
                   <button
-                   onClick={handleWithRegistration}
+                    onClick={handleWithRegistration}
                     type="submit"
                     className="w-full flex justify-center bg-neutral-300 hover:bg-neutral-400 text-neutral-700 p-3  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
                   >

@@ -13,6 +13,7 @@ import AuthProvider from "./assets/components/provider/AuthProvider.jsx";
 import ChefBanner from "./assets/components/ChefBanner/ChefBanner.jsx";
 import { ChakraProvider } from '@chakra-ui/react'
 import ErrorPage from "./assets/components/ErrorPage/ErrorPage.jsx";
+import PrivateRoute from "./assets/components/PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "chefSingleBanner/:id",
-        element: <ChefBanner/>,
+        element:<PrivateRoute><ChefBanner/></PrivateRoute> ,
         loader:({params})=>fetch(`https://chef-server-almahfuz.vercel.app/AllData/${params.id}`)
       },
     ],

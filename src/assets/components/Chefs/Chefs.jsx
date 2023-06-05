@@ -11,7 +11,7 @@ const Chefs = (props) => {
     num_Recipe,
     liked_items,
   } = props.chef;
-  console.log(id);
+  // console.log(id);
   return (
     <div className="my-1 mx-4 px-1 max-w-full md:w-1/2 lg:my-3 lg:px-2 lg:w-1/4 duration-300 hover:-translate-y-1">
       <article className="overflow-hidden rounded-lg shadow-lg">

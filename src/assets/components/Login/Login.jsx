@@ -1,13 +1,16 @@
 import React, { useContext, useState } from "react";
 import Banner2 from "../images/Banner2.jpg";
 import SocialLogSign from "../SocialLogSign/SocialLogSign";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const location = useLocation();
+  const navigate =useNavigate()
+  const from = location.state?.from?.pathname || "/";
 
   const handleWithLogIn = (e) => {
     e.preventDefault();
@@ -16,7 +19,7 @@ const Login = () => {
       signIn(email, password)
         .then((result) => {
           console.log(result.user);
-          navigate("/");
+          navigate(from, { replace: true });
         })
         .catch((error) => {
           console.log(error.message);
@@ -61,23 +64,25 @@ const Login = () => {
                     className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                     type="email"
                     placeholder="mail@gmail.com"
-                 required />
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="mb-5 text-sm font-medium text-gray-700 tracking-wide">
                     Password
                   </label>
                   <input
-                   onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                     type="password"
                     placeholder="Enter your password"
-                    required />
+                    required
+                  />
                 </div>
 
                 <div>
                   <button
-                   onClick={handleWithLogIn}
+                    onClick={handleWithLogIn}
                     type="submit"
                     className="w-full flex justify-center bg-neutral-300 hover:bg-neutral-400 text-neutral-700 p-3  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
                   >

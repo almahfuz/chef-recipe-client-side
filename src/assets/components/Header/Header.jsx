@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { Footer } from "flowbite-react";
 import { FaBars, FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Header = () => {
@@ -47,12 +47,15 @@ const Header = () => {
               >
                 <div className="flex flex-col lg:flex-row list-none lg:ml-auto">
                   <div className="nav-item">
-                    <Link
+                    <NavLink
                       to="/"
                       className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
+                      style={(isActive) => ({
+                        color: isActive ? "green" : "blue",
+                      })}
                     >
                       Home
-                    </Link>
+                    </NavLink>
                   </div>
                   <div className="nav-item">
                     <Link
@@ -87,14 +90,7 @@ const Header = () => {
                       </Link>
                     )}
                   </div>
-                  <div className="nav-item">
-                    <Link
-                      to="/signUp"
-                      className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
-                    >
-                      Sign up
-                    </Link>
-                  </div>
+
                   <div className="nav-item">
                     <Link
                       className="px-3 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"

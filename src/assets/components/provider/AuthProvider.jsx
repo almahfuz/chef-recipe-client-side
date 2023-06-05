@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../../../Firebase/firebase.config";
 
@@ -32,8 +33,9 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      console.log("logged in user inside auth state observer", loggedUser);
+    const unsubscribe = onAuthStateChanged(auth, 
+      (loggedUser) => {
+      // console.log("logged in user inside auth state observer", loggedUser);
       setUser(loggedUser);
       setLoading(false);
     });
@@ -43,6 +45,11 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  // const updatedProfile = (displayName, photoURL) => {
+  //   setLoading(true);
+  //   return updateProfile(auth,displayName, photoURL);
+  // };
+  
   const authInfo = {
     user,
     loading,
