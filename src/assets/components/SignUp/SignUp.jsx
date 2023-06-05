@@ -16,15 +16,17 @@ const SignUp = () => {
   const handleWithRegistration = (e) => {
     e.preventDefault();
     // console.log(name, email, password);
-    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) {
-      setError("8 characters,at least 1 letter,1 num and 1 special character");
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      setError("Minimum 8 characters, at least 1 letter and 1 number");
       return;
     }
+   
     if ((name, email, password)) {
-      registerCreateUser(name,email, password)
+      registerCreateUser(email, password)
         .then((result) => {
           console.log(result.user);
           navigate("/");
+
         })
         .catch((err) => {
           console.log(err.message);
@@ -93,7 +95,7 @@ const SignUp = () => {
                     type="password"
                     placeholder="Enter your password"
                     required />
-                  <p className="text-[6px] text-rose-700">{error}</p>
+                  <p className="text-[8px] text-rose-700">{error}</p>
                 </div>
                 {/* <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 tracking-wide">

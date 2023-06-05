@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Banner2 from "../images/Banner2.jpg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Home = () => {
-  // const {user} = useContext(AuthContext);
+  // const [chefs, setChefs] = useState([]);
+
+  // useEffect(() => {
+  //   fetch("/allData")
+  //     .then((res) => res.json())
+  //     .then((data) => setChefs(data))
+  //     .catch((er) => console.error(er));
+  // }, []);
 
   return (
     <div className="min-h-[calc(100vh-136px)]">
