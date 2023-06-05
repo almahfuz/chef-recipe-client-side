@@ -54,9 +54,9 @@ const ChefBanner = () => {
           </div>
         </div>
       </div>
-      <div className="p-10 md:p-12">
+      <div >
         {chef.recipes.map((cards) => (
-          <ChefCard key={chef.id} cards={cards}></ChefCard>
+          <ChefCard cards={cards}></ChefCard>
         ))}
       </div>
     </div>

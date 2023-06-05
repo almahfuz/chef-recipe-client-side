@@ -36,7 +36,7 @@ const Home = () => {
         </div>
       </div>
       <div className=" container my-12 mx-auto px-4 md:px-12">
-       <div className="flex flex-wrap -mx-1 lg:-mx-4">
+       <div className="flex flex-wrap -mx-1 lg:-mx-4 items-center justify-center">
        {
           ChefsItems.map(chef => <Chefs
           key= {chef.id}
