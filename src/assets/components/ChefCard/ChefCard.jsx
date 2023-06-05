@@ -4,12 +4,12 @@ import Banner2 from "../images/Banner2.jpg";
 const ChefCard = () => {
   return (
     <div>
-      <div className="p-10">
-        <div className="m-auto w-full lg:max-w-full lg:flex">
+      <div className="">
+        <div className="m-auto w-full lg:max-w-full lg:flex md:w-9/12">
           <div
             className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
             style={{ backgroundImage: `url(${Banner2})` }}
-            title="Mountain"
+            title=""
           ></div>
           <div className="border border-l border-gray-400  lg:border-gray-400 bg-white rounded-b  p-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">

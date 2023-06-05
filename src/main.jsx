@@ -10,6 +10,7 @@ import Blog from "./assets/components/Blog/Blog.jsx";
 import Login from "./assets/components/Login/Login.jsx";
 import SignUp from "./assets/components/SignUp/SignUp.jsx";
 import AuthProvider from "./assets/components/provider/AuthProvider.jsx";
+import ChefBanner from "./assets/components/ChefBanner/ChefBanner.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
       {
         path: "/signUp",
         element: <SignUp />,
+      },
+      {
+        path: "chefSingleBanner/:id",
+        element: <ChefBanner/>,
+        loader:({params})=>fetch(`https://chef-server-almahfuz.vercel.app/AllData/${params.id}`)
       },
     ],
   },

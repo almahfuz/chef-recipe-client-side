@@ -7,7 +7,7 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user?.email);
+  // console.log(user?.email);
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleLogOut = () => {
