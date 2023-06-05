@@ -1,14 +1,23 @@
 import React, { useState } from "react";
-import Banner2 from "../images/Banner2.jpg";
-import { rankings } from "match-sorter";
+import { useToast } from "@chakra-ui/react";
+import { FaHeart } from "react-icons/fa";
 
 const ChefCard = (props) => {
   const [isClicked, setIsClicked] = useState(false);
 
-  //   const handleTostify = ()=>{
-  // toast('Recipe is your favorite')
-  // setIsClicked(true);
-  //   }
+  const toast = useToast();
+
+  const handleToast = () => {
+    toast({
+      title: "This is your favorite food",
+      description: "you love this food",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+      
+    });
+    setIsClicked(true);
+  };
 
   console.log(props.cards.recipe_img);
   const { recipe_img, recipe_name, ingredients, cooking_method, rating } =
@@ -31,9 +40,18 @@ const ChefCard = (props) => {
           </div>
           <div className="flex items-center">
             <div className="text-sm">
-              <p className="text-gray-900 leading-none">{cooking_method}</p>
-              <p className="text-gray-600">rating: {rating}</p>
-              <p className="text-gray-600">Favorite button</p>
+              <p className="text-gray-900 leading-none pt-2">
+                {cooking_method}
+              </p>
+              <p className="text-gray-600 pt-2">Rating: {rating}*</p>
+              <p
+                className="text-gray-600 mt-2 flex items-center hover:text-red-900 cursor-pointer"
+                onClick={handleToast}
+                disabled={isClicked}
+              >
+               favorite food <span className="ps-2"><FaHeart></FaHeart></span> 
+               
+              </p>
             </div>
           </div>
         </div>

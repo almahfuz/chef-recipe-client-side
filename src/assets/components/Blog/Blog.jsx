@@ -6,9 +6,7 @@ import ChefCard from '../ChefCard/ChefCard';
 const Blog = () => {
     return (
         <div>
-            <Chefs></Chefs>
-            <ChefBanner></ChefBanner>
-            <ChefCard></ChefCard>
+           
         </div>
     );
 };

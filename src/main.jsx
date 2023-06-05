@@ -11,12 +11,14 @@ import Login from "./assets/components/Login/Login.jsx";
 import SignUp from "./assets/components/SignUp/SignUp.jsx";
 import AuthProvider from "./assets/components/provider/AuthProvider.jsx";
 import ChefBanner from "./assets/components/ChefBanner/ChefBanner.jsx";
+import { ChakraProvider } from '@chakra-ui/react'
+import ErrorPage from "./assets/components/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    // errorElement:<ErrorPage></ErrorPage>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -44,7 +46,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+
   <AuthProvider>
+      <ChakraProvider>
     <RouterProvider router={router}></RouterProvider>
+    </ChakraProvider>
   </AuthProvider>
+ 
 );
