@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { Avatar, Dropdown, Navbar, Tooltip } from "flowbite-react";
 import { Footer } from "flowbite-react";
 import { FaBars, FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
@@ -24,10 +24,7 @@ const Header = () => {
           <nav className="relative flex flex-wrap items-center justify-between px-2 py-3  text-neutral-700 bg-neutral-200 dark:text-neutral-200 ">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
               <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
-                <a
-                  className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase "
-                  href="#pablo"
-                >
+                <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase ">
                   Started kabab house
                 </a>
                 <button
@@ -46,64 +43,76 @@ const Header = () => {
                 id="example-navbar-info"
               >
                 <div className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                  <div className="nav-item">
+                  <div className="">
                     <NavLink
                       to="/"
-                      className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
-                      style={(isActive) => ({
-                        color: isActive ? "green" : "blue",
-                      })}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "px-3 py-2 flex items-center text-xs uppercase leading-snug text-red-500 font-bold"
+                          : "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-neutral-700 hover:opacity-75"
+                      }
                     >
                       Home
                     </NavLink>
                   </div>
                   <div className="nav-item">
-                    <Link
+                    <NavLink
                       to="/blog"
-                      className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "px-3 py-2 flex items-center text-xs uppercase leading-snug text-red-500 font-bold"
+                          : "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-neutral-700 hover:opacity-75"
+                      }
                     >
                       Blog
-                    </Link>
+                    </NavLink>
                   </div>
-                  <div className="nav-item">
-                    <Link
-                      to="/blog"
-                      className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
-                    >
-                      Profile
-                    </Link>
-                  </div>
+
                   <div className="nav-item">
                     {user?.email ? (
-                      <button
+                      <NavLink
                         onClick={handleLogOut}
-                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "px-3 py-2 flex items-center text-xs uppercase leading-snug text-red-700 font-bold"
+                            : "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-neutral-700 hover:opacity-75"
+                        }
                       >
                         log out
-                      </button>
+                      </NavLink>
                     ) : (
-                      <Link
+                      <NavLink
                         to="/login"
-                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "px-3 py-2 flex items-center text-xs uppercase leading-snug text-red-500 font-bold"
+                            : "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-neutral-700 hover:opacity-75"
+                        }
                       >
                         log in
-                      </Link>
+                      </NavLink>
                     )}
                   </div>
 
                   <div className="nav-item">
-                    <Link
-                      className="px-3 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75"
-                      href="#pablo"
-                    >
+                    <NavLink className="px-3 flex items-center text-xs uppercase font-bold leading-snug  text-neutral-700 dark:text-neutral-200 hover:opacity-75">
                       <i className=" rounded text-lg leading-lg  text-neutral-700 dark:text-neutral-200 opacity-75">
-                        {" "}
-                        <img
-                          className="w-8 bg-white  rounded-full border border-gray-100 shadow-sm hover:{user?.name}"
-                          src={user?.photoURL}
-                        />
+                        <div className="group flex relative">
+                          <span className=" text-white px-2 py-1">
+                            <img
+                              className={`w-8 bg-white  rounded-full border border-gray-100 shadow-sm`}
+                              src={user?.photoURL}
+                            />
+                          </span>
+                          <span
+                            className="group-hover:opacity-100 transition-opacity bg-gray-800 px-1 text-sm text-gray-100 rounded-md absolute left-1/2 
+    -translate-x-1/2 translate-y-full opacity-0 m-1 mx-auto"
+                          >
+                            {user?.displayName}
+                          </span>
+                        </div>
                       </i>
-                    </Link>
+                    </NavLink>
                   </div>
                 </div>
               </div>

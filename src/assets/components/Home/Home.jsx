@@ -6,7 +6,6 @@ import Chefs from "../Chefs/Chefs";
 
 const Home = () => {
   const [ChefsItems, setChefsItems] = useState([]);
-  const {user}= useContext(AuthContext);
 
   useEffect(() => {
     fetch("https://chef-server-almahfuz.vercel.app/AllData")
@@ -19,13 +18,14 @@ const Home = () => {
     <div>
       <div className="min-h-[calc(100vh-136px)]">
         <div
-           className="bg-cover bg-center  max-h-screen h-screen text-white py-24 px-10 md:py-48  lg:py-48 object-fill bg-opacity-0.8 "
-           style={{ backgroundImage: `url(${Banner2})` }}
+          className="bg-cover bg-center  max-h-screen h-screen text-white py-20 px-10  md:py-48   lg:py-48 object-fill bg-opacity-0.8 "
+          style={{ backgroundImage: `url(${Banner2})` }}
         >
           <div className="md:w-1/2 2">
             {/* <p className="font-bold text-sm uppercase">Services</p> */}
             <p className="text-3xl font-bold">Started Kabab House</p>
             <p className="text-2xl mb-10 leading-none">
+              <p className="pb-2 pt-1">Romanian Kabab Food House</p>
               Marinate, thread, grill, serve. Only for the best kebab!
             </p>
             <Link
@@ -37,15 +37,23 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className=" container my-12 mx-auto px-4 md:px-12">
-        <div className="flex flex-wrap -mx-1 lg:-mx-4 items-center justify-center">
-          {ChefsItems.map((chef) => (
-            <Chefs key={chef.id} chef={chef}></Chefs>
-          ))}
+      <div>
+        <div className="container my-12 mx-auto px-4 md:px-12 text-center">
+          <div className=" text-2xl md:text-4xl font-semibold">
+            {" "}
+            Chef's Profile
+          </div>
+          <div className="divider mx-auto w-2/4"></div>
+        </div>
+
+        <div className=" container my-12 mx-auto px-4 md:px-12">
+          <div className="flex flex-wrap -mx-1 lg:-mx-4 items-center justify-center">
+            {ChefsItems.map((chef) => (
+              <Chefs key={chef.id} chef={chef}></Chefs>
+            ))}
+          </div>
         </div>
       </div>
-
-      
     </div>
   );
 };

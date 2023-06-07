@@ -39,7 +39,6 @@ const AuthProvider = ({ children }) => {
       setUser(loggedUser);
       setLoading(false);
     });
-
     return () => {
       unsubscribe();
     };
@@ -55,6 +54,7 @@ const AuthProvider = ({ children }) => {
     loading,
     registerCreateUser,
     signIn,
+    setUser,
     logOut,
   };
 
