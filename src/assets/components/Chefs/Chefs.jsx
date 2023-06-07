@@ -18,7 +18,7 @@ const Chefs = (props) => {
         <div>
           <img
             alt="Placeholder"
-            className="block h-auto w-full object-cover"
+            className="block  w-96 object-cover h-48"
             src={chef_photo}
           />
         </div>

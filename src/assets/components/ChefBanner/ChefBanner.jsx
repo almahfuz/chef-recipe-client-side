@@ -47,8 +47,8 @@ const ChefBanner = () => {
                   </div>
                 </div>
               </div>
-              <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center md:justify-end">
-                <img className="object-cover" src={chef.chef_photo} alt="" />
+              <div className="md:w-1/2  mt-8 md:mt-0 flex justify-center md:justify-end">
+                <img className="object-cover h-48 w-96" src={chef.chef_photo} alt="" />
               </div>
             </div>
           </div>
