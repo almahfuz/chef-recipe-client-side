@@ -1,4 +1,5 @@
 import React from "react";
+import Feedback from "../Feedback/Feedback";
 
 const Blog = () => {
   return (
@@ -41,6 +42,7 @@ const Blog = () => {
           for managing the local state of components.
         </p>
       </div>
+     
     </div>
   );
 };

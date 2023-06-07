@@ -3,6 +3,8 @@ import Banner2 from "../images/Banner2.jpg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Chefs from "../Chefs/Chefs";
+import RecipeHome from "../RecipeHome/RecipeHome";
+import Feedback from "../Feedback/Feedback";
 
 const Home = () => {
   const [ChefsItems, setChefsItems] = useState([]);
@@ -53,6 +55,27 @@ const Home = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div>
+        <div className="container pt-6 mt-5 my-12 mx-auto px-4 md:px-12 text-center">
+          <div className=" text-2xl md:text-4xl font-semibold"> Recipe's Items</div>
+          <div className="divider mx-auto w-2/4"></div>
+        </div>
+
+        <div className=" container my-12 mx-auto px-4 md:px-12">
+          <div className="flex flex-wrap -mx-1 lg:-mx-4 items-center justify-center">
+            {ChefsItems.map((chef) => (
+              <RecipeHome key={chef.id} chef={chef}></RecipeHome>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="container pt-6 mt-5  mx-auto px-4  text-center">
+          <div className=" text-2xl md:text-4xl font-semibold">Mission </div>
+          <div className="divider mx-auto w-2/4"></div>
+        </div>
+        <Feedback></Feedback>
       </div>
     </div>
   );
