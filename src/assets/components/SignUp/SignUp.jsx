@@ -20,6 +20,7 @@ const SignUp = () => {
       setError("Minimum 8 characters, at least 1 letter and 1 number");
       return;
     }
+
     if ((email, password)) {
       registerCreateUser(email, password)
         .then((result) => {
@@ -113,7 +114,7 @@ const SignUp = () => {
                     placeholder="Enter your password"
                     required
                   />
-                  <p className="text-[8px] text-rose-700">{error}</p>
+                  <p className="text-[10px] text-rose-700">{error}</p>
                 </div>
                 {/* <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700 tracking-wide">

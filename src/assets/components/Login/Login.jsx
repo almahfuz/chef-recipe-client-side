@@ -8,13 +8,21 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const location = useLocation();
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
   const handleWithLogIn = (e) => {
     e.preventDefault();
-
+    const isEmailValid = /@/.test(email);
+    if (
+      !isEmailValid &&
+      !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)
+    ) {
+      setError(" Email and password doesn't match");
+      return;
+    }
     if ((email, password)) {
       signIn(email, password)
         .then((result) => {
@@ -78,6 +86,7 @@ const Login = () => {
                     placeholder="Enter your password"
                     required
                   />
+                  <p className="text-[10px] text-rose-700">{error}</p>
                 </div>
 
                 <div>
