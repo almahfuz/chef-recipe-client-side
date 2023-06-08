@@ -12,13 +12,7 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env. VITE_MESSAGINGSENDERID,
   appId:  import.meta.env.VITE_APPID
 
-  // apiKey: "AIzaSyApdFIMbepHLlTRdQt--cHbIv9CQCFMKIQ",
-  // authDomain: "chef-project-821d1.firebaseapp.com",
-  // projectId: "chef-project-821d1",
-  // storageBucket: "chef-project-821d1.appspot.com",
-  // messagingSenderId: "864436785774",
-  // appId: "1:864436785774:web:ebe9c367e1437da0c68c7f"
-
+  
 
 };
 
